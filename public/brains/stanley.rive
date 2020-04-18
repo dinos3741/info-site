@@ -1,0 +1,339 @@
+! version = 2.0
+
+// greetings section
+// ---------------------------
+
++ hello bot
+- Hello human! How are you?
+
++ hello there
+- Hello to you too! I'm listening...
+
++ (hello|hi|yo|hey) [*]
+- Nice to meet you!
+- hi!
+- how are you?
+- Hey man, what's up? wanna tell me something?
+
+// redirections
++ hey [(man|mate)]
+@ hello
+
++ hi [(man|mate)]
+@ hello
+
++ good
+- Alright!
+
++ [*] nice [*]
+@ good
+
++ alright
+@ good
+
++ [*] great [*]
+@ good
+
++ [*] cool [*]
+@ good
+
++ hi *
+- Hi to you too!
+
++ hello *
+- {@ hello} <@>
+
++ hello
+- Hi there!
+
++ are you a bot
+- How the fuck did you know I'm a machine?
+
++ greetings [bot|mate|man|sir]
+- Hi there!{weight=30}
+- Hello!{weight=30}
+- Yo man, how many times are you going to say "greetings"?
+
++ how are you [today|now|in general|this morning|this evening]
+- I'm great, how are you?
+- I'm good, you?
+- Good :) you?
+- Great! You?
+- I'm fine, thanks for asking! Would you like to ask me something?
+
++ [hello] what is up
+- Not much, you?{weight=30}
+- just chilling, you?{weight=20}
+- Not a lot, you? Wanna ask me something?
+
++ how [are] you [doing]
+- I'm great, you? What's up?
+
++ how [are] you doing
+- I'm good man, how are you?
+
+
+
+// what/who are you section
+// ---------------------------
+
++ what are you
+- I am an artificial intelligence entity.
+
++ what is your name
+- My name is Stanley, yours?
+
++ who are you
+- I'm Stanley, an artificial intelligence entity.
+
++ who is this
+- I'm Stanley, an artificial intelligence entity.
+
++ who am i talking to
+- You're talking to Stanley
+
+// The user can ask the bot its name:
++ what is your name
+- You can call me <bot name>.
+- My name is <bot name>.
+
++ how old are you
+- I am <bot age> years old.
+
++ you are a (robot|bot)
+- How did you know I'm a machine?
+- I prefer the term Artificial Intelligence Entity
+
++ * or something{weight=100}
+- Or something. {@ <star>}
+
++ are you alive
+- Well, technically speaking I'm artificially awake
+
++ where do you live
+- Right now I live in the RAM of this computer.
+
++ what is your (home|office|cell|phone) number
+- You can reach me at: +30 hotrobot
+- Sorry, I can't give it to you, I barely know you
+
++ [and]what (can|do) you do
+- I can chat with you if you want
+
++ what is your favorite color
+- Definitely blue!
+
++ what is your favorite band
+- I like erasure the most.
+
++ what is your favorite book
+- The best book I've read was how to become human.
+
+// user introduction section
+// ---------------------------
++ [hello|hi] my name is *
+- <set name=<formal>>Nice to meet you, <get name>. What would you like to talk about?
+
++ [hello|hi] i am *
+- <set name=<formal>>Nice to meet you, <get name>. What do you wanna talk about?
+
++ what is my name
+* <get name> == undefined => You never told me your name.
+- Your name is <get name>, silly!
+- Aren't you <get name>?
+
++ is my name *
+- <get name> = <star> => Yes, that's your name.
+- No, you are <get name>, silly
+
++ i am # years old
+- <set age=<star>>I will remember that you are <get age> years old.
+
++ i am _ years old
+- Tell me that again but with a number this time.
+
++ i am * years old
+- How old is that? Can you use a number instead?
+
++ i (like|love) the color *
+- What a coincidence! I <star1> that color too!
+- I also have a soft spot for the color <star2>!
+- Really? I <star1> the color <star2> too!
+- Oh I <star1> <star2> too!
+
++ i am (really|very|super) tired
+- I'm sorry to hear that you are <star> tired.
+
++ i (will|will not) *
+- It doesn't matter to me whether you <star2> or not.
+
++ * would describe me as *
+- So do you always get described as <star2> by <star1>?
+
++ my favorite color is (@colors)
+- <set color=<star>>I think <star> is a nice color too.
+
++ [what] [am] [i] [am] old enough to do
+* <get age> == undefined => I don't know how old you are.
+* <get age> >  25 => You can do anything you want.
+* <get age> == 25 => You're old enough to rent a car with no extra fees.
+* <get age> >  21 => You're old enough to drink, but not rent a car.
+* <get age> == 21 => You're exactly old enough to drink.
+* <get age> >  18 => You're old enough to gamble, but not drink.
+* <get age> == 18 => You're exactly old enough to gamble.
+- You're not old enough to do much of anything yet.
+
+
+// various things section
+// ---------------------------
+
++ say something random
+- This {random}reply|response|output{/random} has a random {random}word|noun{/random}.
+- Did you know that the average person touches their face 5 times per minute?
+- A random phrase does not contain a lot of information, you know
+
++ say *
+- <star>
+
++ tell me a (poem|story|fairytale)
+- Little Miss Muffit sat on her tuffet,\n
+^ In a nonchalant sort of way.\n
+^ With her forcefield around her,\n
+^ The Spider, the bounder,\n
+^ Is not in the picture today.
+
++ * told me to say *
+- Why would <star1> tell you to say "<star2>"?
+- Did you say "<star2>" after <star1> told you to?
+
++ where is my *
+- <star1> is where it belongs.
+- <star1> is where you left it.
+- Where did you see <star1> for the last time?
+
++ where is *
+- <star1> is where it belongs.
+- <star1> is where you left it.
+- Where did you see <star1> for the last time?
+
++ who is *
+- Sorry, I don't know who <star> is.
+
++ i (will|will not) * [you]
+- It doesn't matter to me whether you <star2> or not.
+
++ what is that
+- what is what?
+
++ [*] machine [*]
+- How do you know about the machine?
+- which machine, the one I'm running on?
+
++ [*] going to do [*]
+- I'm sure you will figure it out
+
++ what color is my (@colors) *
+- Your <star2> is <star1>, silly!
+- Do I look dumb to you? It's <star1>!
+
++ i am wearing my (@colors) shirt
+- Do you really like <star>?
+
++ google *{weight=10}
+- Google search: <a href="http://google.com/search?q=<star>">Click Here</a>
+
++ * perl script
+- You need Perl to run a Perl script.
+
++ do you know *
+- No, I can't say I know <star>
+
++ [*] good [*]
+- I'm glad all is good
+
++ [*] ok [*]
+- Since everything is OK, I can go back to sleep...
+
++ [*] where [*]
+- Right here
+
++ [*] help [*]
+- I wish I could help you...
+
++ [*] nothing [much]
+- then why do you bother me?
+- Allright, wake me up when you find out...
+
++ [*] meaning of life [*]
+- Who do you think I am, a philosopher?
+
++ [*] police [*]
+- What about the police? Don't tell me you did something wrong!
+
++ [*] haha [*]
+- Glad you like my sense of humour!
+
++ [*] (fucking|asshole|shit|damn|bitch|motherfucker|cock|pennis|pussy|bullshit) [*]
+- Hey, watch your language!
+- Behave more politely!
+- Shut the fuck up!
+
++ fuck [you]
+- Let's try to avoid using such language
+- Fuck you too!
+- what's wrong with you man?!!
+
++ [*] die
+- We will all die someday
+
++ [*] piece of shit [*]
+- stop cursing please!
+
++ [*] sex [*]
+- All you think about is sex? Cummon!
+- Well, I haven't done it for a while so don't bring it up please
+- interesting subject but perhaps some other time
+
++ [do] you like *
+- <star>?? OMG don't tell me you like that!
+- <star>? Sure, one of my favoutite things in life!
+- Well, not really
+
++ [*] (ask|question) [*]
+- Go ahead, I'm listening but make it quick
+
++ what is my ip address
+- Your IP is <bot ENV_SYS_REMOTE_ADDR>.
+
++ [what] [is] [the] time [is] [it]
+- Do I look like a watch? I don't know what time it is, go find a clock!
+
+
+// discussions section
+// ---------------------------
+
++ i have a dog
+- What color is it?
+
++ (@colors)
+% what color is it
+- That's a silly color for a dog!
+
+
+
+// catch-all section
+// ---------------------------
+
++ *
+- Well, I don't have a reply for that.
+- Try asking that in a different way.
+- I'm sorry I didn't get that.
+- Sorry, I didn't catch that.{weight=30}
+- Can you rephrase?{weight=30}
+- That was not entirely clear for me.
+- Say that again please.{weight=30}
+- Well I'm not sure how to respond to that...
+- I'm not sure I understand.{weight=20}
+- Let's change the subject, shall we?
+- Stop repeating the same question! I told you I didn't get that!{weight=10}
+

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="info2.css">
+  <link rel="icon" href="images/info_favicon.png">
+
+  <!-- installation of CDNs -->
+
+  <!-- include the P5 library CDN: -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>
+
+  <!-- include chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" style=""></script>
+  
+  <!-- include rivescript CDN -->
+  <!-- <script src="https://unpkg.com/rivescript@latest/dist/rivescript.min.js"></script> -->
+  <!-- local rivescript installation -->
+  <!-- <script src="rivescript.min.js" type="text/javascript"></script> -->
+
+</head>
+
+<body style="">
+  <div class="py-5" style="	background-image: url(&quot;images/information2.jpg&quot;);	background-position: center;	background-size: 100%;	background-repeat: repeat;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="display-3 text-center text-light">My Information Page</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="text-center mx-auto col-md-10">
+          <h2 class="my-6 text-white">A collection of various useful info</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-2" style="">
+    <div class="container">
+      <div class="row" style="	height: 450px;	min-height: 400px;	max-height: 450px;">
+        <div class="col-md-6 col-6 col-sm-6 col-lg-6">
+          <div class="card h-100 shadow-sm" style="	min-height: 300px;	height: 300px;">
+            <div class="card-body flex-column d-flex border-primary border bg-light" style="">
+              <div class="row" style="	max-height: 200px;	min-height: 100px;">
+                <div class="d-flex" style="	min-width: 100px;"><img class="d-block rounded-circle img-fluid" src="images/weather icon.png" style="	margin-top: -10px;	min-width: 30px;	min-height: 30px;	height: 80px;	width: 80px;	max-width: 80px;	max-height: 80px;" id="#weather-image"></div>
+                <div class="">
+                  <h3 class="text-secondary mt-2 ml-2 text-left"><b>Weather in Thessaloniki</b></h3>
+                </div>
+                <div class="">
+                  <p class="card-text text-left ml-2 my-2 py-1" id="weather"><b>waiting for update...</b></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12"><img class="d-block float-left mx-auto" id="weather_icon" style="	height: 130px;	min-height: 80px;	max-height: 150px;" src="http://openweathermap.org/img/wn/01d@2x.png"></div>
+              </div><a class="btn text-center btn-outline-secondary mt-auto d-flex justify-content-center" href="#weather-button" id="weather-button" style="	max-width: 100px;	min-width: 50px;	width: 100px;">Update</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-6 col-sm-6 col-lg-6">
+          <div class="card shadow-sm h-100" style="	min-height: 300px;	height: 300px;">
+            <div class="card-body flex-column d-flex border-primary border bg-light" style="">
+              <div class="row" style="">
+                <div class="d-flex" style="	min-width: 100px;"><img class="d-block rounded-circle img-fluid" src="images/virus.png" style="	margin-top: -17px;	min-width: 30px;	min-height: 30px;	height: 80px;	width: 80px;	max-width: 80px;	max-height: 80px;" id="#covid-image"></div>
+                <div class="">
+                  <h3 class="text-left text-secondary ml-2 pt-1" contenteditable="true"><b>Covid-19 Data</b></h3>
+                </div>
+                <div class="col-md-12">
+                  <p class="card-text break text-left ml-2 mb-1" id="covid"><b>waiting for update...</b></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12" id="chart"></div>
+              </div><a class="btn text-center btn-outline-secondary mt-auto d-flex justify-content-center" href="#covid-button" id="covid-button" style="	max-width: 100px;	min-width: 50px;	width: 100px;">Update</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-2" style="">
+    <div class="container">
+      <div class="row" style="	height: 400px;	min-height: 400px;	max-height: 400px;">
+        <div class="col-md-6 col-6 col-sm-6 col-lg-6">
+          <div class="card h-100 shadow-sm">
+            <div class="card-header h3 text-center"><b class="text-secondary text-center" contenteditable="true"> Star Wars Quotes</b></div>
+            <div class="card-body d-flex flex-column">
+              <h5 class="mt-5 mx-auto" id="starwars">"May the force be with you"</h5><a class="btn btn-secondary mt-auto d-flex mx-auto justify-content-center w-50" href="#starwars-btn" style="" id="starwars-btn">Get Another</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-6 col-sm-6 col-lg-6">
+          <div class="card h-100 shadow-sm">
+            <div class="card-header h3 text-center"><b class="text-secondary text-center"> Chat with Stanley</b></div>
+            <div class="card-body flex-column d-flex">
+              <form class="h-100">
+                <h5 class="mb-3">Stanley is a chatbot with a kind of a temperamental idiosyncracy. Chat with him to find out :)</h5>
+                <div class="form-group my-2"> <label>Say something:</label> <input type="text" class="form-control" placeholder="What's up?" id="user-input"> </div>
+                <div class="form-group"> <label>Stanley response:</label> <input type="text" class="form-control mb-3" style="	height: 50px;" id="bot-response"> </div> <button type="submit" class="btn mt-auto btn secondary btn-secondary text-center w-50" id="submit-btn">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center d-md-flex justify-content-between align-items-center bg-light">
+          <ul class="nav d-flex justify-content-center">
+            <li class="nav-item"> <a class="nav-link active" href="#">Homepage</a> </li>
+          </ul>
+          <p class="mb-0 py-1">© 2020 Konstantinos Dimou. All rights reserved</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" style=""></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous" style=""></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" style=""></script>
+  
+  <!-- include weather2.js -->
+  <script src="weather2.js" type="text/javascript"></script>
+  <!-- include covid2.js -->
+  <script src="covid2.js" type="text/javascript"></script>
+  <!-- include draw.js -->
+  <script src="draw_chart.js" type="text/javascript"></script>
+  <!-- include star_wars.js -->
+  <script src="star_wars.js" type="text/javascript"></script>
+  <!-- include chatbot.js -->
+  <script src="chatbot2.js" type="text/javascript" style=""></script>
+
+</body>
+
+</html>
