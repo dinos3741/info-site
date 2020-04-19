@@ -7,6 +7,9 @@ var app = express();
 // serve an html static file from the public folder (default name: index.html):
 app.use(express.static("public")); // we could use any folder name
 
+// file system read-write module:
+var fs = require('fs');
+
 // http request module:
 var request = require("request");
 
@@ -77,6 +80,9 @@ var covid = mongoose.model("Covid", covidSchema);
 	});
 });
 
+
+// ----------------------------------------------------------
+// create rivescript and load brains:
 var RiveScript = require('rivescript');
 
 // create the chatbot object:
@@ -113,19 +119,28 @@ var script_log = '';
 // receive GET request from chatbot2.js with a user phrase:
 app.get('/chatbot', (req, res) => {
  	
-	var input_str = req._parsedOriginalUrl.query;
+	input_str = req._parsedOriginalUrl.query;
 
 	// log the human input:
-	script_log = script_log.concat("human: " + input_str + "\n");
+	// get current date and time:
+	var d = new Date();
+  	script_log = d.toLocaleDateString();
+  	script_log = script_log.concat(", ", d.toLocaleTimeString(), ": \n");
+	script_log = script_log.concat("User: " + input_str + "\n");
 
  	// pass the user input to the bot. DecodeURI is used to remove %20 coding for spaces
 	bot.reply("local-user", decodeURI(input_str)).then(function(reply) {
 		// get the answer asynchronously (using promise) and display on the output box:
     	res.send(reply);
-	});
+		
+		// log the bot response in the same logfile:
+		script_log = script_log.concat("Stanley: " + reply + "\n\b");
 
-	// log the bot response in the same logfile:
-	script_log = script_log.concat("bot: " + reply + "\n");
+		// now append the script to the file:
+		fs.appendFile('chatbot.log', decodeURI(script_log), function (err) {
+			if (err) throw err;
+		});
+	});
 });
 
 

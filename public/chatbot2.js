@@ -1,4 +1,5 @@
 // implement chatbot query and response
+// version where logic is implemented in the server and this sends only GET user requests
 
 // global input string for processing:
 var input_str;

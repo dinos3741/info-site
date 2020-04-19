@@ -183,6 +183,8 @@
 * <get age> == 18 => You're exactly old enough to gamble.
 - You're not old enough to do much of anything yet.
 
++ (thank you|thanks|thanks man)
+- You're welcome!
 
 // various things section
 // ---------------------------
@@ -307,6 +309,10 @@
 
 + [what] [is] [the] time [is] [it]
 - Do I look like a watch? I don't know what time it is, go find a clock!
+
++ [*] deep (discussion|conversation)
+- Oh nooo I'm bored right now... perhaps later?
+
 
 
 // discussions section
