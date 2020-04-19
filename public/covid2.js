@@ -10,7 +10,14 @@ update with a GET request.
 let covid_string = 'Click to see current data';
 
 // url and data object to include in the POST request:
-const covid_url = "http://localhost:3000/covid";
+// check if address is localhost. If not, use the domain name address
+var covid_url;
+if (window.location.href == "http://localhost:3000/") {
+	covid_url = "http://localhost:3000/covid/"
+} else {
+	covid_url = "http://www1.dinosdimou.site:3000/covid/";
+}
+
 let covidData = new Object();
 
 // jQuery covid update button:

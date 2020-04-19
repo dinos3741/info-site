@@ -7,7 +7,16 @@ let weather_string = 'waiting for update...';
 // data to send with the POST request to the node.js server. I have to send to 192.168.1.6 (private IP, because 
 // localhost means local machine, and is only recognized from here. If I want to send the request from the iphone, 
 // it will not work.
-const weather_url = "http://localhost:3000/weather";
+
+// url and data object to include in the POST request:
+// check if address is localhost. If not, use the domain name address
+var weather_url;
+if (window.location.href == "http://localhost:3000/") {
+	weather_url = "http://localhost:3000/weather/"
+} else {
+	weather_url = "http://www1.dinosdimou.site:3000/weather/";
+}
+
 // define data object to send to the post request (temperature as received from the JSON):
 let weatherData = new Object();
 
