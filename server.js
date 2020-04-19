@@ -12,6 +12,7 @@ var request = require("request");
 
 // require body-parser to enable express to get data from POST requests:
 var bodyParser = require("body-parser");
+
 // tell express to use body parser:
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -23,8 +24,13 @@ var mongoose = require("mongoose");
 
 // configure mongoose and connect to mongodb to the info database locally connected to the default port:
 // I have to use either localhost or 127.0.0.1, I cannot use the 192.168.1.6 (private IP). 
+// SOS: this needs to be changed to mongo in the container instead of localhost, if the container name is
+// mongo in the docker-compose.yml file
 // Note: if the database name does not exist, it will create it!
-mongoose.connect("mongodb://localhost:27017/info"); // specify the database name here (info). 
+
+// mongoose.connect("mongodb://localhost:27017/info"); // specify the database name here (info). 
+mongoose.connect("mongodb://mongo:27017/info");
+
 
 // MONGODB CONFUGURATION
 // create the schema for the weather database. We define what we want to store in the database:
@@ -100,17 +106,26 @@ bot.loadFile("public/brains/begin.rive").then(function() {
 	console.error("Error loading subs!");
 });
 
+// text log of the transcript:
+var script_log = '';
+
 // ----------------------------------------------------------
-// receive GET request from chatbot.js with a user phrase:
+// receive GET request from chatbot2.js with a user phrase:
 app.get('/chatbot', (req, res) => {
  	
 	var input_str = req._parsedOriginalUrl.query;
+
+	// log the human input:
+	script_log = script_log.concat("human: " + input_str + "\n");
 
  	// pass the user input to the bot. DecodeURI is used to remove %20 coding for spaces
 	bot.reply("local-user", decodeURI(input_str)).then(function(reply) {
 		// get the answer asynchronously (using promise) and display on the output box:
     	res.send(reply);
 	});
+
+	// log the bot response in the same logfile:
+	script_log = script_log.concat("bot: " + reply + "\n");
 });
 
 
