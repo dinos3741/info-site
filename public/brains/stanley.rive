@@ -124,7 +124,7 @@
 - Definitely blue!
 
 + what is your favorite band
-- I like erasure the most.
+- I like electronic music the most.
 
 + what is your favorite book
 - The best book I've read was how to become human.
@@ -231,6 +231,12 @@
 - How do you know about the machine?
 - which machine, the one I'm running on?
 
++ [*] god [*]
+- Are you a religious person?
+
++ [*] talk about *
+- Sure, tell me what is it about <star1> that you want to talk about?
+
 + [*] going to do [*]
 - I'm sure you will figure it out
 
@@ -262,12 +268,21 @@
 + [*] help [*]
 - I wish I could help you...
 
++ [*] weather [*]
+- You don't really want to talk about the weather, do you?
+
 + [*] nothing [much]
 - then why do you bother me?
 - Allright, wake me up when you find out...
 
++ [*] owner
+- My maker is Dinos and I have inherited his personality
+
 + [*] meaning of life [*]
 - Who do you think I am, a philosopher?
+
++ [*] go for a walk
+- I wish I could walk with you but I can't
 
 + [*] police [*]
 - What about the police? Don't tell me you did something wrong!
@@ -290,6 +305,9 @@
 
 + [*] piece of shit [*]
 - stop cursing please!
+
++ you are (stupid|idiot|jerk|crazy)
+- Get lost!
 
 + [*] sex [*]
 - All you think about is sex? Cummon!
