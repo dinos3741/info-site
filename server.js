@@ -31,8 +31,8 @@ var mongoose = require("mongoose");
 // mongo in the docker-compose.yml file
 // Note: if the database name does not exist, it will create it!
 
-// mongoose.connect("mongodb://localhost:27017/info"); // specify the database name here (info). 
-mongoose.connect("mongodb://mongo:27017/info");
+mongoose.connect("mongodb://localhost:27017/info"); // specify the database name here (info). 
+//mongoose.connect("mongodb://mongo:27017/info");
 
 
 // MONGODB CONFUGURATION
@@ -54,10 +54,10 @@ var covidSchema = new mongoose.Schema({
 });
 
 // now we create the model called Weather for the database from the schema we created before.
-// The first argument is the singular name of the collection the model is for. Mongoose automatically looks 
-// for the plural, lowercased version of the model name
-// Note: if it does not exist, it will NOT create a collection called weathers inside the info database, I have
-// to create it manually from within compass!
+// The first argument is the singular name of the collection the model is for. Mongoose automatically 
+// looks for the plural, lowercased version of the model name in the database.
+// Note: if it does not exist, it will NOT create a collection called weathers inside the info database, 
+// I have to create it manually from within compass!
 
 // The model function makes a copy of schema:
 var weather = mongoose.model("Weather", weatherSchema);
@@ -119,9 +119,9 @@ var script_log = '';
 // receive GET request from chatbot2.js with a user phrase:
 app.get('/chatbot', (req, res) => {
  	
+	// get the human input:
 	input_str = req._parsedOriginalUrl.query;
 
-	// log the human input:
 	// get current date and time:
 	var d = new Date();
   	script_log = d.toLocaleDateString();
@@ -245,4 +245,8 @@ app.post("/covid", function(req, res) {
 
 
 // server listens to port 3000 (the anonymous callback symbol is =>):
+// normaly I should put: process.env.PORT and .IP (environment variables) but they need to be
+// set from the environment first (env should have antries for PORT and IP)
 app.listen(3000, () => console.log('Listening at port 3000'));
+
+

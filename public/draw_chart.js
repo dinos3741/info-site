@@ -7,6 +7,14 @@ let graph_data = [];
 var canvas;
 var myChart;
 
+// check if address is localhost. If not, use the domain name address
+var draw_address;
+if (window.location.origin == "http://localhost:3000") {
+    draw_address = "http://localhost:3000/covid"
+} else {
+    draw_address = "http://www1.dinosdimou.site:3000/covid";
+}
+
 // I create a P5 instance instead of the global mode (so I can run multiple P5 sketches). 
 // The entry point for the instance is here:
 const s = ( sketch ) => {
@@ -58,9 +66,9 @@ const s = ( sketch ) => {
 
 
         // send a GET request to the server to obtain covid chart data (contained in the data field):
-        $.get('http://localhost:3000/covid', function(data, status) {
+        $.get(draw_address, function(data, status) {
             // status is sent back if the /covid page renders or sends something back
-            console.log("GET request to covid route: " + status);
+            //console.log("GET request to covid route for draw chart: " + status);
 
             // populate the labels and data arrays for display (array of strings):
             for (var i=0; i<data.length; i++) {

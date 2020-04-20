@@ -6,10 +6,10 @@ var input_str;
 
 // check if address is localhost. If not, use the domain name address
 var address;
-if (window.location.href == "http://localhost:3000/") {
-	address = "http://localhost:3000/chatbot/"
+if (window.location.origin == "http://localhost:3000") {
+	address = "http://localhost:3000/chatbot"
 } else {
-	address = "http://www1.dinosdimou.site:3000/chatbot/";
+	address = "http://www1.dinosdimou.site:3000/chatbot";
 }
 
 // get user input after button click:

@@ -11,10 +11,10 @@ let weather_string = 'waiting for update...';
 // url and data object to include in the POST request:
 // check if address is localhost. If not, use the domain name address
 var weather_url;
-if (window.location.href == "http://localhost:3000/") {
-	weather_url = "http://localhost:3000/weather/"
+if (window.location.origin == "http://localhost:3000") {
+	weather_url = "http://localhost:3000/weather"
 } else {
-	weather_url = "http://www1.dinosdimou.site:3000/weather/";
+	weather_url = "http://www1.dinosdimou.site:3000/weather";
 }
 
 // define data object to send to the post request (temperature as received from the JSON):

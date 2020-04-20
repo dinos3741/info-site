@@ -1,5 +1,7 @@
 ! version = 2.0
 
+// SOS: no question marks at the end of a user phrase!!!
+
 // greetings section
 // ---------------------------
 
@@ -71,6 +73,9 @@
 
 + how [are] you doing
 - I'm good man, how are you?
+
++ what [are] you doing
+- Chilling and talking to you
 
 
 
@@ -233,6 +238,7 @@
 
 + [*] god [*]
 - Are you a religious person?
+- What do you think I am, a priest?
 
 + [*] talk about *
 - Sure, tell me what is it about <star1> that you want to talk about?
@@ -249,9 +255,6 @@
 
 + google *{weight=10}
 - Google search: <a href="http://google.com/search?q=<star>">Click Here</a>
-
-+ * perl script
-- You need Perl to run a Perl script.
 
 + do you know *
 - No, I can't say I know <star>
