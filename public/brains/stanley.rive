@@ -63,6 +63,9 @@
 - Great! You?
 - I'm fine, thanks for asking! Would you like to ask me something?
 
++ good *
+- Good <star1> to you too!
+
 + [hello] what is up
 - Not much, you?{weight=30}
 - just chilling, you?{weight=20}
@@ -76,6 +79,9 @@
 
 + what [are] you doing
 - Chilling and talking to you
+
++ [*] (goodnight|good night) [*]
+- Going to sleep so early? OK then sweet dreams!
 
 
 
